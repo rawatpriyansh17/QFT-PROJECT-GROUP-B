@@ -26,6 +26,21 @@ python3 step1.py --config config.json
 | `config.json` | Physical inputs, grids and tolerances |
 | `requirements.txt` | Package versions used for the calculation |
 
-Running the script creates `results/` with CSV tables, check results, software versions and source/configuration hashes, and `figures/` with the horizon map and validation plots. All 10 checks must pass; otherwise the script raises an error.
+The checked outputs are included in [`results/`](results/) and [`figures/`](figures/). Running the script regenerates them. All 10 checks must pass; otherwise the script raises an error.
 
 The calculation is deterministic. No coupled-field entropy or spectator bispectrum is computed in this step. The tilted single-field reference is separate from the exact de Sitter background of the two-field model and is not added to a spectator bispectrum.
+
+## Saved results
+
+- [Validation summary](results/summary.json): all 10 checks passed, with maximum numerical errors and source/configuration hashes.
+- [Software versions and command](results/environment.json).
+- [Squeezed reference table](results/squeezed_reference.csv) and [horizon map data](results/horizon_map.csv).
+- [Direct-derivative convergence](results/derivative_convergence.csv), [dilation convergence](results/dilation_convergence.csv), and [tilt controls](results/tilt_controls.csv).
+
+## Figures
+
+![de Sitter horizon map](figures/horizon_map.png)
+
+![Single-field reference validation](figures/reference_validation.png)
+
+Vector versions: [horizon map PDF](figures/horizon_map.pdf) and [reference validation PDF](figures/reference_validation.pdf).

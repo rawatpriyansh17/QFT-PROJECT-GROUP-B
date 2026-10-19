@@ -10,4 +10,4 @@ Supervisor: Professor Rudranil Basu.
 
 - [`step1/`](step1/): spacetime conventions and numerical validation of the single-field squeezed-limit reference.
 
-Each step has its own code, configuration and run instructions. Reports are submitted separately.
+Each step has its own code, configuration, checked numerical results, figures and run instructions. Reports are submitted separately.

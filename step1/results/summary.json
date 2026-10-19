@@ -1,0 +1,32 @@
+{
+  "scope": "Step 1 conventions and single-clock reference only",
+  "ns": 0.965,
+  "reference_ratio": 0.03500000000000003,
+  "k_points": 121,
+  "k_range": [
+    0.001,
+    1000.0
+  ],
+  "finest_fractional_step": 1e-05,
+  "finest_dilation_step": 0.0001,
+  "max_derivative_error": 1.0529342953091714e-09,
+  "max_dilation_error": 3.885822219551471e-12,
+  "tolerance_absolute": 5e-08,
+  "checks": {
+    "requested_reference_is_0_035": true,
+    "k_derivative_matches_reference": true,
+    "finite_dilation_matches_reference": true,
+    "two_numerical_routes_agree": true,
+    "scale_invariant_control_is_zero": true,
+    "red_and_blue_tilt_controls_match": true,
+    "amplitude_and_pivot_cancel": true,
+    "central_difference_second_order": true,
+    "horizon_identity": true,
+    "horizon_crossing": true
+  },
+  "all_checks_passed": true,
+  "random_seed": null,
+  "randomness": "None; all computations are deterministic",
+  "source_sha256": "7c711edaab746f473af586deeb2123f3f43372462ac29e1d58fadf300b799446",
+  "config_sha256": "e3bbd2f0269f304e5dd1ca5c207a810b89101a8bc7e482c1194fee262b69538a"
+}
