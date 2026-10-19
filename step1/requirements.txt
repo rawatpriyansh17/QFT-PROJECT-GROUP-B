@@ -1,0 +1,3 @@
+# Versions used for the delivered deterministic Step 1 calculation.
+numpy==2.3.5
+matplotlib==3.10.8

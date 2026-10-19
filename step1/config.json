@@ -1,0 +1,18 @@
+{
+  "H": 1.0,
+  "k_horizon": 1.0,
+  "ns": 0.965,
+  "amplitude": 1.0,
+  "pivot": 1.0,
+  "k_min": 0.001,
+  "k_max": 1000.0,
+  "k_points": 121,
+  "fractional_steps": [0.01, 0.005, 0.0025, 0.00125, 0.0001, 0.00001],
+  "dilation_steps": [0.1, 0.01, 0.001, 0.0001],
+  "ns_controls": [0.94, 0.965, 1.0, 1.02],
+  "x_min": 0.01,
+  "x_max": 100.0,
+  "x_points": 161,
+  "validation_abs_tolerance": 5e-8,
+  "random_seed": null
+}
