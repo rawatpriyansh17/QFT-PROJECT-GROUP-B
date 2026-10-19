@@ -27,6 +27,12 @@
   "all_checks_passed": true,
   "random_seed": null,
   "randomness": "None; all computations are deterministic",
-  "source_sha256": "7c711edaab746f473af586deeb2123f3f43372462ac29e1d58fadf300b799446",
-  "config_sha256": "e3bbd2f0269f304e5dd1ca5c207a810b89101a8bc7e482c1194fee262b69538a"
+  "source_sha256": "e840b901c5c5ccca52442427dbd96738ad0ae2b91735fd3c5cb267136068bbfc",
+  "config_sha256": "e3bbd2f0269f304e5dd1ca5c207a810b89101a8bc7e482c1194fee262b69538a",
+  "software": {
+    "python": "3.12.14",
+    "numpy": "2.3.5",
+    "matplotlib": "3.10.8",
+    "reproduce_command": "python3 step1/step1.py --config step1/config.json"
+  }
 }

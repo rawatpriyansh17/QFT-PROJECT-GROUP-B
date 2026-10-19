@@ -118,10 +118,6 @@ def main():
              ["k_over_pivot", "P_zeta", "analytic_ratio", "k_derivative_ratio", "dilation_ratio"],
              zip(k / pivot, power(k, ns, amp, pivot), np.full_like(k, expected), derivative, dilation))
     save_csv(results / "derivative_convergence.csv", ["fractional_step", "max_absolute_error"], convergence)
-    save_csv(results / "dilation_convergence.csv", ["dilation_step", "max_absolute_error"], dilations)
-    save_csv(results / "tilt_controls.csv", ["ns", "analytic_ratio", "max_absolute_error"], controls)
-    save_csv(results / "horizon_map.csv", ["x", "eta", "scale_factor", "a_over_a_crossing"],
-             zip(x, eta, a, a / ahorizon))
 
     plt.rcParams.update({"font.family": "DejaVu Sans", "font.size": 10,
                          "axes.spines.top": False, "axes.spines.right": False,
@@ -158,6 +154,9 @@ def main():
     fig.savefig(figures / "reference_validation.png", dpi=180)
     plt.close(fig)
 
+    environment = {"python": platform.python_version(), "numpy": np.__version__,
+                   "matplotlib": matplotlib.__version__,
+                   "reproduce_command": "python3 step1/step1.py --config step1/config.json"}
     summary = {
         "scope": "Step 1 conventions and single-clock reference only",
         "ns": ns, "reference_ratio": expected, "k_points": len(k),
@@ -171,12 +170,9 @@ def main():
         "randomness": "None; all computations are deterministic",
         "source_sha256": sha256(Path(__file__)),
         "config_sha256": sha256(cfg_path),
+        "software": environment,
     }
     (results / "summary.json").write_text(json.dumps(summary, indent=2) + "\n")
-    environment = {"python": platform.python_version(), "numpy": np.__version__,
-                   "matplotlib": matplotlib.__version__, "platform": platform.platform(),
-                   "reproduce_command": "python3 step1/step1.py --config step1/config.json"}
-    (results / "environment.json").write_text(json.dumps(environment, indent=2) + "\n")
     if not summary["all_checks_passed"]:
         raise AssertionError(f"Validation failed: {checks}")
     print(json.dumps(summary, indent=2))

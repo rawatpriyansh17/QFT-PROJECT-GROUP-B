@@ -1,46 +1,32 @@
 # Step 1: Spacetime, fields and observables
 
-The script checks the single-field reference `B_zeta/(P_L P_S) -> 1 - ns = 0.035` at `ns = 0.965`, using direct differentiation and a finite spatial dilation. It also checks the de Sitter horizon convention `x = k/(aH)`.
+This step fixes the de Sitter horizon convention and checks the single-field squeezed-limit reference. For the specified spectral index `ns = 0.965`, the expected normalised bispectrum is `1 - ns = 0.035`. This is the reference for the later two-field calculation.
 
-## Run
+## Results
 
-From the repository root, using Python 3.12:
+![Single-field reference and numerical convergence](figures/reference_validation.png)
+
+**Left:** direct differentiation of the power spectrum and differentiation of a finite spatial dilation both reproduce `0.035` across six decades of wavenumber. Their curves overlap the analytic reference. **Right:** the error decreases approximately as the square of the numerical step, confirming the expected central-difference convergence. The smallest-step error is about `1.05e-9`.
+
+![de Sitter horizon convention](figures/horizon_map.png)
+
+As the universe expands, `x = k/(aH)` decreases. The mode moves from inside the horizon (`x > 1`), crosses at `x = 1`, and reaches the outside region (`x < 1`). The line shows `a/a* = 1/x`; it checks the background convention rather than simulating a field mode.
+
+All **10 validation checks pass**, including the zero reference at `ns = 1` and independence from the arbitrary power-spectrum normalisation.
+
+| Saved file | What it shows |
+| --- | --- |
+| [Reference values](results/squeezed_reference.csv) | The analytic value and both numerical estimates at 121 wavenumbers; these are the data in the first plot's left panel. |
+| [Convergence table](results/derivative_convergence.csv) | The maximum error at each differentiation step; these are the data in the right panel. |
+| [Validation summary](results/summary.json) | Check results, maximum errors, tolerance, software versions and hashes identifying the tested code and inputs. |
+
+## Reproduce
+
+From the repository root, with Python 3.12:
 
 ```bash
 python3 -m pip install -r step1/requirements.txt
 python3 step1/step1.py --config step1/config.json
 ```
 
-Or, from this folder:
-
-```bash
-python3 -m pip install -r requirements.txt
-python3 step1.py --config config.json
-```
-
-## Files
-
-| File | Purpose |
-| --- | --- |
-| `step1.py` | Numerical checks and figure generation |
-| `config.json` | Physical inputs, grids and tolerances |
-| `requirements.txt` | Package versions used for the calculation |
-
-The checked outputs are included in [`results/`](results/) and [`figures/`](figures/). Running the script regenerates them. All 10 checks must pass; otherwise the script raises an error.
-
-The calculation is deterministic. No coupled-field entropy or spectator bispectrum is computed in this step. The tilted single-field reference is separate from the exact de Sitter background of the two-field model and is not added to a spectator bispectrum.
-
-## Saved results
-
-- [Validation summary](results/summary.json): all 10 checks passed, with maximum numerical errors and source/configuration hashes.
-- [Software versions and command](results/environment.json).
-- [Squeezed reference table](results/squeezed_reference.csv) and [horizon map data](results/horizon_map.csv).
-- [Direct-derivative convergence](results/derivative_convergence.csv), [dilation convergence](results/dilation_convergence.csv), and [tilt controls](results/tilt_controls.csv).
-
-## Figures
-
-![de Sitter horizon map](figures/horizon_map.png)
-
-![Single-field reference validation](figures/reference_validation.png)
-
-Vector versions: [horizon map PDF](figures/horizon_map.pdf) and [reference validation PDF](figures/reference_validation.pdf).
+The [script](step1.py) regenerates the tables and figures using the [saved inputs](config.json). PNG previews are included here; vector PDFs are generated locally for report preparation.
