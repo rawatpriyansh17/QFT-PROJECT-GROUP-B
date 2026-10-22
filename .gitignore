@@ -3,3 +3,4 @@ __pycache__/
 .venv/
 .DS_Store
 step*/figures/*.pdf
+step*/latex/build/
