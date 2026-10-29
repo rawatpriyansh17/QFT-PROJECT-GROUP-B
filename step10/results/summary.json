@@ -1,0 +1,45 @@
+{
+  "baseline_entropy": 0.00018459917824217246,
+  "baseline_F_r003": -3.9858100896456554e-10,
+  "main_conclusion": "At fixed quadratic parameters the Gaussian entropy is unchanged when lambda3 varies, while the leading bispectrum is proportional to lambda3.",
+  "clock_amplitude_note": "F at one triangle is not the clock amplitude. Physical frequency and window tests are in Step 9.",
+  "software": {
+    "python": "3.12.14",
+    "numpy": "2.3.5",
+    "scipy": "1.17.0",
+    "mpmath": "1.3.0",
+    "matplotlib": "3.10.8"
+  },
+  "settings": {
+    "mass_mixing_pairs": [
+      [
+        2,
+        0.05
+      ],
+      [
+        2,
+        0.1
+      ],
+      [
+        2,
+        0.2
+      ],
+      [
+        1.8,
+        0.1
+      ],
+      [
+        2.4,
+        0.1
+      ]
+    ],
+    "entropy_time": 0.01,
+    "triangle_r": 0.03,
+    "cubic_controls": [
+      0,
+      0.005,
+      0.01
+    ],
+    "common_absolute_noise_F": 1e-10
+  }
+}

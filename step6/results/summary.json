@@ -1,0 +1,33 @@
+{
+  "clock_frequency_M2_g01": 1.3266499161421599,
+  "test_gamma": 1.0,
+  "H": 1.0,
+  "max_error_epsilon_0001": 5.999983539783926e-06,
+  "quadrature_matches_regulated_formula": true,
+  "software": {
+    "python": "3.12.14",
+    "numpy": "2.3.5",
+    "scipy": "1.17.0",
+    "mpmath": "1.3.0",
+    "matplotlib": "3.10.8"
+  },
+  "settings": {
+    "M": 2,
+    "g": 0.1,
+    "gamma": 1,
+    "H": 1,
+    "r": [
+      1,
+      0.1,
+      0.03,
+      0.01
+    ],
+    "epsilons": [
+      0.1,
+      0.05,
+      0.025,
+      0.01,
+      0.001
+    ]
+  }
+}

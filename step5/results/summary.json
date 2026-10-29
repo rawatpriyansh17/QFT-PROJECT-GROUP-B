@@ -1,0 +1,42 @@
+{
+  "last_reliable_x": 0.000549194307944356,
+  "max_zero_mixing_entropy": 2.227407108687146e-09,
+  "g_sign_entropy_difference": 6.003347721283275e-12,
+  "accepted_scan_rows": 64,
+  "total_scan_rows": 64,
+  "benchmark_entropy_x001": 0.0001845987159302836,
+  "benchmark_power_change_x001": 0.0037140249795459823,
+  "software": {
+    "python": "3.12.14",
+    "numpy": "2.3.5",
+    "scipy": "1.17.0",
+    "mpmath": "1.3.0",
+    "matplotlib": "3.10.8"
+  },
+  "settings": {
+    "M_values": [
+      1.6,
+      1.8,
+      2,
+      2.4
+    ],
+    "g_values": [
+      0,
+      0.05,
+      0.1,
+      0.2
+    ],
+    "x_comparisons": [
+      1,
+      0.1,
+      0.01,
+      0.001
+    ],
+    "X": 400,
+    "initial_state": "adiabatic_order_6",
+    "rtol": 2.5e-14,
+    "atol": 1e-17,
+    "commutator_limit": 1e-06,
+    "purity_limit": 1e-05
+  }
+}

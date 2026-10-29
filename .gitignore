@@ -4,3 +4,6 @@ __pycache__/
 .DS_Store
 step*/figures/*.pdf
 step*/latex/build/
+
+final_report/latex/build/
+step*/latex/error.log
