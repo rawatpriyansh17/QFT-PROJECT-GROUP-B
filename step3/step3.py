@@ -9,7 +9,7 @@ SETTINGS={'M': 2, 'g': 0.1, 'X': 100, 'xf': 0.001, 'rtol': 1e-10, 'atol': 1e-12,
 
 def main():
     p=output(3);a,k,m,r=sp.symbols('a k m rho',positive=True)
-    q,s,v,w,P,T=sp.symbols('q sigma v w P T')
+    q,s,v,w,P,T=sp.symbols('q sigma v w pi_q pi_sigma')
     L=a*a*(v*v+w*w-k*k*(q*q+s*s))/2-a**4*m*m*s*s/2+a**3*r*v*s
     vel={v:(P-a**3*r*s)/a**2,w:T/a**2}
     H=sp.expand((P*v+T*w-L).subs(vel))

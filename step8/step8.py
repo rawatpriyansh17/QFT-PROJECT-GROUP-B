@@ -28,9 +28,10 @@ def main():
     baseline=modes(X=1600,xf=1e-6,rtol=1e-12,atol=1e-15,state='adiabatic')
     other=modes(X=800,xf=1e-6,rtol=1e-12,atol=1e-15,state='adiabatic')
     loose=modes(X=1600,xf=1e-6,rtol=1e-11,atol=1e-14,state='adiabatic')
-    rows=[];summary=[]
+    rows=[];summary=[];variation_rows=[]
     for r in rs:
         vals,_=integral(baseline,r,zmax=640,epsilons=eps)
+        variation_rows.extend([[r,0,e,v] for e,v in zip(eps,vals)])
         fixed=[]
         for e,L in zip([.1,.05,.025],[80,160,320]):
             short,_=integral(baseline,r,zmax=L,epsilons=[e]);long,_=integral(baseline,r,zmax=2*L,epsilons=[e])
@@ -39,13 +40,18 @@ def main():
         vx,_=integral(other,r,zmax=640,epsilons=eps);fx,_=extrapolate(eps,vx)
         vt,_=integral(loose,r,zmax=640,epsilons=eps);ft,_=extrapolate(eps,vt)
         vq,_=integral(baseline,r,zmax=640,epsilons=eps,refine=2,order=16);fq,_=extrapolate(eps,vq)
+        variation_rows.extend([[r,1,e,v] for e,v in zip(eps,vx)])
+        variation_rows.extend([[r,2,e,v] for e,v in zip(eps,vt)])
+        variation_rows.extend([[r,3,e,v] for e,v in zip(eps,vq)])
         finals=[]
-        for zf in [.003,.001]:
+        for final_index,zf in enumerate([.003,.001]):
             vf,_=integral(baseline,r,zf=zf,zmax=640,epsilons=eps);ff,_=extrapolate(eps,vf);finals.append(ff)
+            variation_rows.extend([[r,4+final_index,e,v] for e,v in zip(eps,vf)])
         errs=[abs(fx-central),regerr,abs(ft-central),abs(fq-central),max(abs(np.array(finals)-central)),max(fixed)]
         uncertainty=sum(errs)
         summary.append([r,central,*errs,uncertainty])
         for e,v in zip(eps,vals):rows.append([r,1,e,640,v,v])
+    save_table(p/'results/variation_integrals.csv','r,variation_code,epsilon,F_regulated',variation_rows)
     save_table(p/'results/cutoff_and_regulator.csv','r,test_type,epsilon,zmax,F_first,F_doubled_cutoff',rows)
     save_table(p/'results/error_budget.csv','r,F_extrapolated,initial_X,regulator,ODE_tolerance,quadrature,final_time,early_tail,total_conservative_error',summary)
     summary=np.array(summary)

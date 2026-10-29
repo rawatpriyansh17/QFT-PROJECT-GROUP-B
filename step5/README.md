@@ -17,6 +17,7 @@ Entropy and fractional power change are compared at the same time x = 0.01; they
 | [gaussian_scan.csv](results/gaussian_scan.csv) | Mass, mixing, common time, entropy, power change and reliability diagnostics. |
 | [entropy_history.csv](results/entropy_history.csv) | The full sampled benchmark history, with residuals so rejected times remain identifiable. |
 | [benchmark_complex_modes.npz](results/benchmark_complex_modes.npz) | Complex benchmark columns and numerical settings; retains phase information. |
+| [scan_complex_modes.npz](results/scan_complex_modes.npz) | Complex canonical columns for all 16 mass/mixing points at the four comparison times. |
 | [summary.json](results/summary.json) | Key results, tested settings and software versions. |
 
 Run from the repository root after installing `requirements.txt`:

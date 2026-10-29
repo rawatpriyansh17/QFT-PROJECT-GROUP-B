@@ -8,6 +8,43 @@ from common.fitting import profile,design
 
 SETTINGS={'M': 2, 'g': 0.1, 'r_min': 0.001, 'r_max': 0.2, 'r_count': 50, 'mock_A': 0.1, 'mock_B': 0.05, 'mock_b0': 0, 'mock_b2': 0.2, 'mock_seed': 20261029, 'held_out_null_seeds': [20261031, 20261035], 'trials_each': 100, 'profile_mu_grid': [0.1, 4, 0.01], 'fit_upper_endpoints': [0.05, 0.1, 0.2], 'fit_lower_endpoints': [0.001, 0.003], 'background_controls': ['1,r2', '1,r2,r4']}
 
+def physical_scan(p,r,gate):
+    physical={'status':'Not fitted: pilot convergence gate failed'}
+    if gate['pilot_below_one_percent_of_clock_envelope']:
+        model=modes(X=1600,xf=1e-6,rtol=1e-12,atol=1e-15,state='adiabatic')
+        vals=[];errors=[];regulated=[]
+        budget=np.loadtxt(ROOT/'step8/results/error_budget.csv',delimiter=',',skiprows=1)
+        budget=budget[np.argsort(budget[:,0])]
+        other_error=budget[:,-1]-budget[:,3]
+        eps=[.1,.05,.025,.0125]
+        for rr in r:
+            vv,_=integral(model,float(rr),zf=.01,zmax=640,epsilons=eps)
+            regulated.extend([[rr,ee,v0] for ee,v0 in zip(eps,vv)])
+            f,e=extrapolate(eps,vv);vals.append(f);extra=float(np.interp(np.log(rr),np.log(budget[:,0]),other_error));errors.append(max(e+extra,1e-14))
+        vals=np.array(vals);errors=np.array(errors)
+        save_table(p/'results/physical_bispectrum.csv','r,F,conservative_numerical_error',np.c_[r,vals,errors])
+        save_table(p/'results/physical_regulated.csv','r,epsilon,F_regulated',regulated)
+        snapx=np.r_[np.linspace(1600,1,8000),np.geomspace(.999,1e-6,800)]
+        archive=p/'results/production_complex_modes.npz'
+        save_modes(archive,model,snapx)
+        diag=diagnostics(model,snapx)
+        with np.load(archive) as stored:data={k:stored[k] for k in stored.files}
+        data.update(commutator_residual=diag[:,4],purity_error=diag[:,5],covariance_reliable=(diag[:,4]<1e-6)&(diag[:,5]<1e-5))
+        np.savez_compressed(archive,**data)
+        fits=[]
+        for upper in [.05,.1,.2]:
+            for lower in [.001,.003]:
+                for extra in [False,True]:
+                    use=(r>=lower)&(r<=upper)
+                    fit=profile(r[use],vals[use],errors[use],extra)
+                    fits.append({'r_min':lower,'r_max':upper,'extra_r4':extra,**{k:v for k,v in fit.items() if k not in ['grid','delta_chi2']}})
+        full=profile(r,vals,errors);amplitude=float(np.hypot(*full['coefficients'][2:4]))
+        envelope_error=float(max(errors/r**1.5))
+        physical={'status':'Leading bispectrum fitted; numerical profile widths are diagnostics, not statistical confidence intervals','fits':fits,'full_range_frequency':full['mu'],'clock_amplitude':amplitude,'numerical_error_over_clock_envelope':envelope_error/max(amplitude,1e-30),'visible_cycles':float(full['mu']*np.log(r[-1]/r[0])/(2*np.pi)),'frequency_best_fit_envelope':[min(f['mu'] for f in fits),max(f['mu'] for f in fits)],'mass_best_fit_envelope':[float(np.sqrt(min(f['mu'] for f in fits)**2+2.24)),float(np.sqrt(max(f['mu'] for f in fits)**2+2.24))]}
+        fig,ax=plt.subplots(1,2,figsize=(7.5,3.3));ax[0].errorbar(r,vals/r**1.5,yerr=errors/r**1.5,fmt='.',ms=3);ax[0].plot(r,(design(r,full['mu'])@np.array(full['coefficients']))/r**1.5);ax[0].set_xscale('log');ax[0].set(xlabel='r',ylabel='F / r^(3/2)')
+        ax[1].plot(full['grid'],full['delta_chi2']);ax[1].axvline(np.sqrt(1.76),color='gray',ls=':',label='Expected frequency');ax[1].set(xlabel='Frequency mu (minimum region)',ylabel='Numerically weighted profile',xlim=(full['mu']-.018,full['mu']+.018),ylim=(0,25));ax[1].legend(fontsize=7);figure(p,'physical_clock_fit')
+    return physical
+
 def main():
     p=output(9);r=np.geomspace(1e-3,.2,50);mu=np.sqrt(1.76)
     coef=np.array([0.,.2,.1,.05]);signal=design(r,mu)@coef
@@ -46,30 +83,6 @@ def main():
     ax[0].axvline(mu,color='black',ls=':');ax[0].set(xlabel='Recovered frequency',ylabel='Mock realisations');ax[0].legend(fontsize=8)
     ax[1].axhline(3.841459,color='gray',ls=':');ax[1].set(xlabel='Frequency mu',ylabel='Profile delta chi squared',ylim=(0,15));ax[1].legend();figure(p,'mock_mass_recovery')
     gate=json.loads((ROOT/'step8/results/summary.json').read_text())
-    physical={'status':'Not fitted: pilot convergence gate failed'}
-    if gate['pilot_below_one_percent_of_clock_envelope']:
-        model=modes(X=1600,xf=1e-6,rtol=1e-12,atol=1e-15,state='adiabatic')
-        vals=[];errors=[]
-        budget=np.loadtxt(ROOT/'step8/results/error_budget.csv',delimiter=',',skiprows=1)
-        budget=budget[np.argsort(budget[:,0])]
-        other_error=budget[:,-1]-budget[:,3]
-        eps=[.1,.05,.025,.0125]
-        for rr in r:
-            vv,_=integral(model,float(rr),zf=.01,zmax=640,epsilons=eps)
-            f,e=extrapolate(eps,vv);vals.append(f);extra=float(np.interp(np.log(rr),np.log(budget[:,0]),other_error));errors.append(max(e+extra,1e-14))
-        vals=np.array(vals);errors=np.array(errors)
-        save_table(p/'results/physical_bispectrum.csv','r,F,conservative_numerical_error',np.c_[r,vals,errors])
-        fits=[]
-        for upper in [.05,.1,.2]:
-            for lower in [.001,.003]:
-                for extra in [False,True]:
-                    use=(r>=lower)&(r<=upper)
-                    fit=profile(r[use],vals[use],errors[use],extra)
-                    fits.append({'r_min':lower,'r_max':upper,'extra_r4':extra,**{k:v for k,v in fit.items() if k not in ['grid','delta_chi2']}})
-        full=profile(r,vals,errors);amplitude=float(np.hypot(*full['coefficients'][2:4]))
-        envelope_error=float(max(errors/r**1.5))
-        physical={'status':'Leading bispectrum fitted; numerical profile widths are diagnostics, not statistical confidence intervals','fits':fits,'full_range_frequency':full['mu'],'clock_amplitude':amplitude,'numerical_error_over_clock_envelope':envelope_error/max(amplitude,1e-30),'visible_cycles':float(full['mu']*np.log(r[-1]/r[0])/(2*np.pi)),'frequency_best_fit_envelope':[min(f['mu'] for f in fits),max(f['mu'] for f in fits)],'mass_best_fit_envelope':[float(np.sqrt(min(f['mu'] for f in fits)**2+2.24)),float(np.sqrt(max(f['mu'] for f in fits)**2+2.24))]}
-        fig,ax=plt.subplots(1,2,figsize=(7.5,3.3));ax[0].errorbar(r,vals/r**1.5,yerr=errors/r**1.5,fmt='.',ms=3);ax[0].plot(r,(design(r,full['mu'])@np.array(full['coefficients']))/r**1.5);ax[0].set_xscale('log');ax[0].set(xlabel='r',ylabel='F / r^(3/2)')
-        ax[1].plot(full['grid'],full['delta_chi2']);ax[1].axvline(np.sqrt(1.76),color='gray',ls=':',label='Expected frequency');ax[1].set(xlabel='Frequency mu (minimum region)',ylabel='Numerically weighted profile',xlim=(full['mu']-.018,full['mu']+.018),ylim=(0,25));ax[1].legend(fontsize=7);figure(p,'physical_clock_fit')
+    physical=physical_scan(p,r,gate)
     save_json(p/'results/summary.json',{'settings':SETTINGS,'seed':20261029,'trials_per_noise':100,'true_frequency':mu,'mock_rms':rms,'mock_results':coverage,'no_clock_controls':nulls,'physical':physical,'software':software()})
 if __name__=='__main__':main()

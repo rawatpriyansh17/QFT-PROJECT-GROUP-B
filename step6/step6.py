@@ -24,5 +24,5 @@ def main():
         a=rows[rows[:,0]==r];plt.loglog(a[:,1],a[:,4],'-o',label=f'r={r:g}')
     plt.xlabel('Regulator epsilon');plt.ylabel('Relative error from zero-regulator answer');plt.legend();figure(p,'in_in_benchmark')
     mu=np.sqrt(2**2+.1**2-2.25)
-    save_json(p/'results/summary.json',{'settings':SETTINGS,'clock_frequency_M2_g01':mu,'test_gamma':1.,'H':1.,'max_error_epsilon_0001':float(max(rows[rows[:,1]==.001,4])),'quadrature_matches_regulated_formula':True,'software':software()})
+    save_json(p/'results/summary.json',{'settings':SETTINGS,'clock_frequency_M2_g01':mu,'test_gamma':1.,'H':1.,'max_relative_error_at_epsilon_0p001':float(max(rows[rows[:,1]==.001,4])),'quadrature_matches_regulated_formula':True,'software':software()})
 if __name__=='__main__':main()

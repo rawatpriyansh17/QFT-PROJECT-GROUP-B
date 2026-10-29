@@ -11,13 +11,15 @@ def main():
     mm=modes(X=400,xf=1e-4,rtol=2.5e-14,atol=1e-17,state='adiabatic');d=diagnostics(mm,xs)
     zero=diagnostics(modes(g=0,X=400,xf=1e-4,rtol=2.5e-14,atol=1e-17,state='adiabatic'),xs)
     good=np.logical_and.accumulate((d[:,4]<1e-6)&(d[:,5]<1e-5)&np.isfinite(d[:,3]))
-    rows=[]
+    rows=[];scan_modes=[];scan_parameters=[]
     for M in [1.6,1.8,2.,2.4]:
         for g in [0.,.05,.1,.2]:
             mod=modes(M,g,X=400,xf=1e-3,rtol=2.5e-14,atol=1e-17,state='adiabatic')
             ds=diagnostics(mod,[1,.1,.01,.001])
+            scan_modes.append(evaluate(mod,[1,.1,.01,.001]));scan_parameters.append([M,g])
             for z,powr,nu,S,comm,pure in ds:rows.append([M,g,z,S,powr/(.5*(1+z*z))-1,comm,pure,int(comm<1e-6 and pure<1e-5 and np.isfinite(S))])
     rows=np.array(rows)
+    np.savez_compressed(p/'results/scan_complex_modes.npz',parameters=np.array(scan_parameters),x=np.array([1,.1,.01,.001]),modes=np.array(scan_modes),rows='Q,Pi_q,Sigma,Pi_sigma',initial_state='adiabatic_order_6',X=400,rtol=2.5e-14,atol=1e-17)
     save_table(p/'results/gaussian_scan.csv','M,g,x,entropy,relative_power_change,commutator_residual,purity_error,reliable',rows)
     save_table(p/'results/entropy_history.csv','x,power,nu,entropy,commutator_residual,purity_error',d)
     save_modes(p/'results/benchmark_complex_modes.npz',mm,xs)

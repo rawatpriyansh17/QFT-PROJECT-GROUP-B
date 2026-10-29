@@ -6,7 +6,7 @@ At fixed quadratic parameters, changing the cubic coupling leaves Gaussian entro
 
 ![Entropy and the spectator signal](figures/entropy_signal_control.png)
 
-Selected common-time entropy/signal comparisons and the independent cubic-coupling control. A single-triangle F also depends on phase.
+Selected common-time entropy/signal comparisons and the independent cubic-coupling control. A single-triangle F also depends on phase. Selected-point error bars show regulator variation; the full baseline error budget is in Step 8.
 
 | Saved result | Meaning |
 | --- | --- |

@@ -2,7 +2,6 @@
   "clock_frequency_M2_g01": 1.3266499161421599,
   "test_gamma": 1.0,
   "H": 1.0,
-  "max_error_epsilon_0001": 5.999983539783926e-06,
   "quadrature_matches_regulated_formula": true,
   "software": {
     "python": "3.12.14",
@@ -29,5 +28,6 @@
       0.01,
       0.001
     ]
-  }
+  },
+  "max_relative_error_at_epsilon_0p001": 5.999983539783926e-06
 }

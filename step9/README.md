@@ -18,6 +18,8 @@ The physical clock shape is resolved, but its mass estimate is more sensitive to
 | [mock_profile_1pct.csv](results/mock_profile_1pct.csv) | Example frequency profile at 1% mock noise. |
 | [mock_profile_5pct.csv](results/mock_profile_5pct.csv) | Example profile at 5% mock noise. |
 | [physical_bispectrum.csv](results/physical_bispectrum.csv) | The 50 physical triangles and conservative numerical errors. |
+| [physical_regulated.csv](results/physical_regulated.csv) | All four regulated values for each of the 50 physical triangles. |
+| [production_complex_modes.npz](results/production_complex_modes.npz) | Production complex columns, momenta and covariance reliability flags; late field contractions are checked separately when momenta lose precision. |
 | [summary.json](results/summary.json) | Key results, tested settings and software versions. |
 
 Run from the repository root after installing `requirements.txt`:
