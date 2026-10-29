@@ -32,3 +32,5 @@ python3 step1/step1.py --config step1/config.json
 The [script](step1.py) regenerates the tables and figures using the [saved inputs](config.json). PNG previews are included here; vector PDFs are generated locally for report preparation.
 
 Report source and compilation instructions: [latex/](latex/).
+
+Download the [Step 1 PDF report](Step_01_Report.pdf).
