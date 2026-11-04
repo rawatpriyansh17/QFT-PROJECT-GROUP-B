@@ -5,7 +5,7 @@
 Priyansh Rawat, Samarth Bhatnagar and Mayank Sinha  
 BITS Pilani, K. K. Birla Goa Campus | Supervisor: Professor Rudranil Basu
 
-**[Final report PDF](final_report/Final_Report.pdf)** · **[Final report LaTeX](final_report/latex/)**
+**[Cumulative report PDF](final_report/Final_Report.pdf)** · **[Cumulative report LaTeX](final_report/latex/)**
 
 | Step | Calculation | Report |
 | --- | --- | --- |
@@ -20,7 +20,7 @@ BITS Pilani, K. K. Birla Goa Campus | Supervisor: Professor Rudranil Basu
 | [9](step9/) | Mass recovery and fit stability | [PDF](step9/Step_09_Report.pdf) |
 | [10](step10/) | Entropy and the spectator signal | [PDF](step10/Step_10_Report.pdf) |
 
-Each step explains its essential figures and data, with the calculation, LaTeX source and downloadable PDF.
+Each step explains its essential figures and data, with the calculation, LaTeX source and downloadable PDF. The cumulative report collects Steps 1–10 as separate sections, each ending with the members’ specific contributions.
 
 ## Reproduce
 
