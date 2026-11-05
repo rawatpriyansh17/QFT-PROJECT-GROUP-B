@@ -71,30 +71,30 @@ We use natural units $\hbar=c=1$ and an exact de Sitter calculational background
 a(\eta)=-\frac{1}{H\eta},\qquad \eta<0,\quad H>0.
 \label{eq:background}
 \end{equation}
-Here $H$ is constant, $\eta$ is conformal time and $a$ is the scale factor. Conformal time and cosmic time obey $\dd t=a\,\dd\eta$. Differentiation with respect to $\eta$ is denoted by a prime. As $\eta$ increases towards zero, $a$ grows.
+Here $H$ is the constant Hubble expansion rate and $a$ is the scale factor. In this de Sitter patch, conformal time runs from $-\infty$ to $0$, while cosmic time runs from $-\infty$ to $+\infty$, with $\dd t=a\,\dd\eta$. A prime denotes differentiation with respect to $\eta$. As $\eta$ increases towards zero, $a$ grows.
 
 For a fixed comoving wavenumber $k=|\bm{k}|>0$, define
 \begin{equation}
 \boxed{x=-k\eta=\frac{k}{aH}.}
 \label{eq:x}
 \end{equation}
-The physical wavenumber is $k/a$, so $x$ compares it with the expansion rate. Evolution proceeds from large to small $x$. The numerical convention is $H=1$, with masses and mixing restored using ratios to $H$.
+The physical wavelength is $\lambda_{\rm ph}=a\lambda_{\rm com}=2\pi a/k$, so the physical wavenumber is $k_{\rm ph}=k/a$. The Hubble radius is $R_H=H^{-1}$ in our units. Thus $x=k_{\rm ph}/H=k_{\rm ph}R_H=2\pi R_H/\lambda_{\rm ph}$ compares the physical wavenumber with the expansion rate. Evolution proceeds from large to small $x$. Numerically we set $H=1$, retaining $m/H$ and $\rho/H$.
 
 \begin{center}
 \begin{tabular}{lll}
 \toprule
 Regime & Condition & Interpretation\\
 \midrule
-Inside the horizon & $x\gg1$ & Physical wavelength is much shorter than $H^{-1}$.\\
-Horizon crossing & $x=1$ & $k=aH$, with $a_*=k/H$.\\
-Outside the horizon & $x\ll1$ & Physical wavelength is much longer than $H^{-1}$.\\
+Inside the horizon & $x\gg1$ & Reduced wavelength $a/k\ll R_H$.\\
+Horizon crossing & $x=1$ & $k=aH$, or $\lambda_{\rm ph}=2\pi R_H$.\\
+Outside the horizon & $x\ll1$ & Reduced wavelength $a/k\gg R_H$.\\
 \bottomrule
 \end{tabular}
 \end{center}
 Here the usual horizon convention compares $a/k$ with $H^{-1}$; retaining a literal wavelength $2\pi a/k$ introduces the corresponding factor of $2\pi$.
 \begin{figure}[H]
 \centering\includegraphics[width=0.78\linewidth]{figures/horizon_map.pdf}
-\caption{For $H=k=1$, $a/a_*=1/x$. The axis follows forward time. This checks the background convention, not field-mode evolution.}
+\caption{For $H=k=1$, $a/a_*=1/x$, where $a_*=k/H$. The axis follows forward time. This checks the background convention, not field-mode evolution.}
 \end{figure}
 
 \newpage
@@ -111,7 +111,7 @@ S_2=\int\dd\eta\,\dd^3x\,\Bigg\{&\frac{a^2}{2}
 \toprule
 Symbol & Meaning\\
 \midrule
-$q$ & Light scalar perturbation, proportional to the curvature perturbation at linear order.\\
+$q$ & Light scalar perturbation, proportional to the curvature perturbation $\zeta$ at linear order.\\
 $\sigma$ & Spectator scalar field; it is the additional degree of freedom to be traced out when studying the light subsystem.\\
 $m$ & Spectator mass parameter in the quadratic action.\\
 $\rho$ & Constant derivative-mixing strength multiplying $q'\sigma$.\\
@@ -124,7 +124,7 @@ $g=\rho/H$ & Dimensionless mixing strength.\\
 \subsection{Reading the action}
 The terms containing time derivatives are kinetic terms. The gradient terms describe spatial variation, and the $m^2\sigma^2$ term supplies the spectator mass. The last term couples the time variation of $q$ to $\sigma$. Thus, at nonzero $\rho$, the two fields do not evolve independently. At $\rho=0$ the quadratic action separates into a massless light field and a massive spectator.
 
-The mixing contains a derivative. Consequently, the momentum conjugate to $q$ must eventually be obtained from $\partial\mathcal L/\partial q'$, rather than assumed to be $a^2q'$. The Legendre transform and canonical evolution are the subject of Step 3; here we retain the action without expanding or dropping any terms.
+The mixing contains a derivative. Consequently, the conjugate momentum is $\pi_q=\partial\mathcal L/\partial q'=a^2q'+a^3\rho\sigma$: the mixing supplies an additional term. The full Legendre transform and canonical evolution are the subject of Step 3; here we retain the action without expanding or dropping any terms.
 
 \subsection{Dimensions and normalisation}
 With dimensionless $a$ and coordinates of inverse-mass dimension, the action is dimensionless when
@@ -133,10 +133,10 @@ With dimensionless $a$ and coordinates of inverse-mass dimension, the action is 
 \end{equation}
 For example, $[q']=\text{mass}^2$ and $[\rho q'\sigma]=\text{mass}^4$, matching the kinetic and mass terms. The integration measure has dimension $\text{mass}^{-4}$.
 
-Write the linear curvature conversion as $q=C\zeta$, where $\zeta$ is dimensionless and $C$ has mass dimension one. The guide does not fix a numerical value for $C$. We therefore keep $q$ and $\zeta$ observables distinct and do not equate their reduced bispectra. A conversion to a specific inflationary model would require its stated background normalisation.
+Write the linear curvature conversion as $q=C\zeta$, where $\zeta$ is dimensionless and $C$ has dimension mass. No numerical value of $C$ is fixed for this project. Power spectra and bispectra acquire different powers of $C$, so we keep $q$ and $\zeta$ observables distinct. A specific inflationary model would require its background normalisation; the conversion factors are given in Section~3.2.
 
 \begin{tcolorbox}
-\textbf{Approximation fixed for the project.} The core calculation uses the specified two-field model on de Sitter space. It does not require the full gravitational cubic action. Later, Gaussian entropy will be calculated within the quadratic theory, while the spectator bispectrum will be evaluated to leading order in a separately specified cubic coupling.
+\textbf{Project assumptions.} We use the specified two-field model on de Sitter space without the full gravitational cubic interactions. Entanglement entropy is calculated in the quadratic theory, which retains terms of total degree two in the fields and their derivatives. The spectator-induced bispectrum is calculated separately, at leading order in a specified cubic coupling.
 \end{tcolorbox}
 
 \newpage
@@ -147,7 +147,7 @@ q(\eta,\bm{x})=\int\frac{\dd^3k}{(2\pi)^3}\,q_{\bm{k}}(\eta)e^{i\bm{k}\cdot\bm{x
 \qquad [a_{\bm{k}},a^\dagger_{\bm{p}}]=(2\pi)^3\delta^3(\bm{k}-\bm{p}).
 \label{eq:fourier}
 \end{equation}
-For a real field, $q_{-\bm{k}}=q_{\bm{k}}^\dagger$. Opposite momenta therefore obey a reality condition; they are not two independent real oscillators. The cosine/sine sector counting needed for entropy will be fixed in Step 2.
+For a real field, $q_{-\bm{k}}=q_{\bm{k}}^\dagger$: opposite Fourier modes are related by a reality condition. A generic nonzero pair is described by independent real cosine and sine sectors. Step 2 fixes their counting when calculating entropy.
 
 Translation invariance gives the momentum-conserving delta functions:
 \begin{align}
@@ -157,7 +157,7 @@ Translation invariance gives the momentum-conserving delta functions:
 &=(2\pi)^3\delta^3(\bm{k}_1+\bm{k}_2+\bm{k}_3)
 B_q(k_1,k_2,k_3).\label{eq:bispectrum}
 \end{align}
-$P_q$ is the power spectrum. $B_q$ is the connected bispectrum, measuring a three-point correlation after disconnected contributions are removed. Momentum conservation requires the three vectors to close into a triangle. A squeezed triangle has $k_L\ll k_S$, with two nearly equal short-wavelength sides.
+$P_q$ measures the strength of two-point correlations at a given wavenumber. $B_q$ measures the connected correlation of three Fourier modes; the subscript $c$ means that products of lower-order correlations have been subtracted. Momentum conservation requires the three vectors to close into a triangle. A squeezed triangle has $k_L\ll k_S$, equivalently $\lambda_L\gg\lambda_S$, with two nearly equal short-wavelength sides.
 
 \subsection{Power spectrum versus dimensionless power}
 For the curvature perturbation, define
@@ -182,23 +182,23 @@ P_q=C^2P_\zeta,\qquad B_q=C^3B_\zeta,\qquad
 \end{equation}
 In this Fourier convention, $[P_q]=\text{mass}^{-1}$ and $[B_q]=\text{mass}^{-3}$, whereas $[P_\zeta]=\text{mass}^{-3}$ and $[B_\zeta]=\text{mass}^{-6}$. A useful later dimensionless spectator quantity is $H B_q/(P_qP_q)$, for the later spectator calculation. It equals the curvature ratio only if the conversion factor is $C=H$.
 
-\textbf{Gaussian baseline.} For a centred Gaussian state evolved with the quadratic action, the connected three-point function vanishes. This can coexist with nonzero light--spectator entanglement. The value derived next is a separate single-clock curvature reference, rather than a bispectrum generated by Eq.~\eqref{eq:action} alone.
+\textbf{Gaussian baseline.} In a centred Gaussian state, $\langle q\rangle=0$ and all odd moments vanish by Wick's theorem, including the connected three-point function. Quadratic evolution preserves Gaussianity, while mixing can still generate light--spectator entanglement. The value derived next comes from a separate single-clock curvature reference, rather than from Eq.~\eqref{eq:action} alone.
 
 \newpage
 \section{Derivation of the single-field squeezed reference}
-In the single-clock attractor setting, a sufficiently long curvature mode is approximately constant across a short-scale region. Its leading effect can be represented by a spatial dilation. The short-scale spectrum conditioned on a small long mode $\zeta_L$ transforms as~\cite{maldacena,creminelli}
+In the single-clock attractor setting, a sufficiently long curvature mode is approximately constant across a short-scale region. Its leading effect is a spatial dilation, which rescales the short-mode wavenumber to $ke^{-\zeta_L}$. The short-scale spectrum conditioned on a small long mode $\zeta_L$ transforms as~\cite{maldacena,creminelli}
 \begin{equation}
 P_\zeta(k\mid\zeta_L)=e^{-3\zeta_L}P_\zeta(ke^{-\zeta_L}).
 \label{eq:dilation}
 \end{equation}
-The argument changes because the local spatial scale changes. The prefactor accounts for the three-dimensional Fourier volume. Expanding both factors to first order gives
+The argument changes with the local spatial scale; the prefactor $e^{-3\zeta_L}$ accounts for the three-dimensional Fourier volume. Expanding both factors to first order gives
 \begin{align}
 e^{-3\zeta_L}&=1-3\zeta_L+O(\zeta_L^2),\\
 P_\zeta(ke^{-\zeta_L})&=P_\zeta(k)-\zeta_L k\partial_kP_\zeta(k)+O(\zeta_L^2),\\
 \delta P_\zeta(k)&=-\zeta_L(3+k\partial_k)P_\zeta(k)+O(\zeta_L^2).
 \label{eq:delta}
 \end{align}
-Correlating this modulation with the long mode supplies its power spectrum. With the overall momentum delta function removed,
+The squeezed bispectrum correlates the long mode with the modulation of the short-mode power. Correlating $\delta P_\zeta$ with $\zeta_L$ supplies $P_\zeta(k_L)$. With the overall momentum delta function removed,
 \begin{equation}
 \lim_{k_L/k_S\to0}B_\zeta(k_L,k_S,k_S)
 =-P_\zeta(k_L)(3+k_S\partial_{k_S})P_\zeta(k_S).
@@ -221,9 +221,9 @@ Dividing Eq.~\eqref{eq:consistency} by the two power spectra yields the required
 The ratio is positive for the specified red tilt. At $n_s=1$ it vanishes, providing a useful control. The number $0.035$ is this particular dimensionless ratio; it is not the unnormalised bispectrum or a direct estimate of a spectator mass.
 
 \subsection{Applicability of the reference}
-This argument uses a long adiabatic mode that acts as a dilation in the single-clock attractor regime. It is not a claim that all multifield or non-attractor models obey the same relation. We use this reference to compare with the extra spectator contribution.
+The relation requires a long adiabatic mode that acts as a coordinate rescaling in a single-clock attractor regime. It need not hold in multifield or non-attractor models. Our spectator supplies an additional degree of freedom whose interactions can produce squeezed signals beyond this single-field reference.
 
-The prescribed $n_s=0.965$ is an external reference input. It is not derived from the massless field on the exact de Sitter background in Eq.~\eqref{eq:background}. In particular, we do not add $0.035$ to a later spectator bispectrum calculated in the model.
+The prescribed $n_s=0.965$ is an external input. An uncoupled massless scalar with the usual vacuum in exact de Sitter space has a scale-invariant late-time spectrum, corresponding to $n_s=1$. Thus $0.035$ is the normalised ratio for the chosen tilted single-field reference, not a contribution generated by our quadratic two-field action. We do not add it to a later spectator bispectrum.
 
 \newpage
 \section{Reproducible numerical validation}
@@ -237,7 +237,7 @@ The normalisation is illustrative; no observational amplitude is fitted. The scr
 \begin{equation}
 R_h(k)=-3-\frac{P_\zeta(k(1+h))-P_\zeta(k(1-h))}{2hP_\zeta(k)}.
 \end{equation}
-The central difference has an $O(h^2)$ truncation error. Refinement gives:
+$R_h$ approximates $-3-k\partial_kP_\zeta/P_\zeta$, testing the consistency coefficient directly. The central difference has an $O(h^2)$ truncation error. Refinement gives:
 \begin{center}
 \begin{tabular}{cc}
 \toprule Fractional step $h$ & $\max_k|R_h-(1-n_s)|$\\\midrule
@@ -249,7 +249,7 @@ The central difference has an $O(h^2)$ truncation error. Refinement gives:
 \begin{equation}
 R_\epsilon(k)=\frac{P_\zeta(k\mid\epsilon)-P_\zeta(k\mid-\epsilon)}{2\epsilon P_\zeta(k)}.
 \end{equation}
-At $h=10^{-5}$ and $\epsilon=10^{-4}$, the maximum absolute errors are $\DerivativeError$ and $\DilationError$, respectively. Both are below the configured absolute tolerance $5\times10^{-8}$. These are numerical differentiation errors in a known benchmark, not uncertainties on a measured cosmological signal.
+$R_\epsilon$ measures the power spectrum's response to a small long-mode dilation. At $h=10^{-5}$ and $\epsilon=10^{-4}$, the maximum absolute errors are $\DerivativeError$ and $\DilationError$, respectively. Both are below the configured absolute tolerance $5\times10^{-8}$. These are numerical differentiation errors in a known benchmark, not uncertainties on a measured cosmological signal.
 \begin{figure}[H]
 \centering\includegraphics[width=\linewidth]{figures/reference_validation.pdf}
 \caption{Left: the analytic value $0.035$ agrees with both numerical routes over six decades of $k$. Right: direct differentiation improves approximately as $h^2$. The calculations check the response identity; they do not evaluate a finite-squeezing or spectator bispectrum.}
