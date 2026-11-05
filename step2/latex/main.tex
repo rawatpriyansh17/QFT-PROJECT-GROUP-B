@@ -55,17 +55,20 @@ K^{1/2}=\frac{K+dI}{t},\qquad K^{-1/2}=\frac1{dt}\begin{pmatrix}2+d&-c\\-c&1+d\e
 \end{equation}
 so
 \begin{equation}
-\nu=\sqrt{\frac{(2+d)(1+d)}{4d(3+2d)}}.
+\nu(c)=\sqrt{\frac{(2+d)(1+d)}{4d(3+2d)}},\qquad S(c)=s\bigl(\nu(c)\bigr).
 \end{equation}
 \begin{center}\small\begin{tabular}{lll}\toprule Coupling $c$ & $\nu$ & Entropy (nats)\\\midrule
 $0$ & $0.500000000$ & $0$\\
 $0.3$ & $0.502816542$ & $0.0193599304$\\
 $0.6$ & $0.512481339$ & $0.0672711138$\\\bottomrule\end{tabular}\end{center}
 \newpage
+\begingroup\setlength{\parskip}{4pt}\setlength{\intextsep}{6pt}
 \section{Numerical checks and interpretation}
-Diagonalisation gives $\nu=0.5028165419863$ and $s=0.0193599304236$ at $c=0.3$. At $c=0$ the oscillators decouple and the entropy vanishes; increasing $c$ to $0.6$ raises it to $0.06727$.
+\textbf{Check 1: exact coupling dependence.}
+Figure~\ref{fig:entropy} evaluates the exact $S(c)$ on 701 points over $0\leq c\leq1.4$, with the three benchmarks retained as markers. The entropy is even in $c$ and diverges as $|c|\to\sqrt2$; this unstable endpoint is excluded.
 
-As an independent check, use the ground-state Gaussian wavefunction
+\textbf{Check 2: Gaussian-wavefunction entropy.}
+Use the ground-state Gaussian wavefunction
 \begin{equation}
 \psi(\bm x)\propto\exp\!\left(-\tfrac12\bm x^TA\bm x\right),\qquad A=K^{1/2}.
 \end{equation}
@@ -73,16 +76,21 @@ Tracing out oscillator 2 and evaluating the Gaussian integrals gives the reduced
 \begin{equation}
 \mathrm{Tr}\,\rho_1^2=\sqrt{\frac{\det A}{A_{11}A_{22}}}=\frac1{2\nu}.
 \end{equation}
-Purity is one for a pure state and smaller than one for a mixed state, independently checking the covariance result.
+The reduced Gaussian kernel has geometric eigenvalues $p_n=(1-\xi)\xi^n$, where $\xi=(1-\mathcal P)/(1+\mathcal P)$ and $\mathcal P=\mathrm{Tr}\,\rho_1^2$. Its entropy is therefore
+\begin{equation}
+S_{\rm G}=-\sum_{n=0}^{\infty}p_n\ln p_n
+=-\ln(1-\xi)-\frac{\xi}{1-\xi}\ln\xi,
+\end{equation}
+with $S_{\rm G}=0$ at $\xi=0$. We compute $A$ by numerical diagonalisation, independently of the closed-form $\nu(c)$, and overlay $S_{\rm G}(c)$ on the exact curve. Their maximum absolute difference on the plotted grid is below $10^{-12}$ nats.
 
-Under a local canonical rescaling $x_1\mapsto bx_1$, $p_1\mapsto p_1/b$, individual variances change, but $X_{11}P_{11}=\nu^2$ and the entropy remain unchanged. The largest numerical change in this product over $b=0.1,0.5,1,2,10$ is $5.551\times10^{-17}$. Thus local squeezing cannot create entanglement between initially decoupled oscillators.
+A local canonical rescaling $x_1\mapsto bx_1$, $p_1\mapsto p_1/b$ leaves $X_{11}P_{11}=\nu^2$ and the entropy invariant. For $b=0.1,0.5,1,2,10$, the largest determinant change is $5.551\times10^{-17}$.
 \begin{figure}[H]
-\centering\includegraphics[width=.80\linewidth]{figures/oscillator_entropy.pdf}
-\caption{Entanglement entropy of one oscillator versus coupling. The marked points show the decoupled case and the two assigned benchmarks.}
+\centering\includegraphics[width=.72\linewidth]{figures/oscillator_entropy.pdf}
+\caption{Exact entropy $S(c)$ (solid blue) and Gaussian-wavefunction entropy (dashed orange) agree and overlap. Black markers retain the three covariance benchmarks.}\label{fig:entropy}
 \end{figure}
 For real fields, $q_{-\bm k}=q_{\bm k}^\dagger$. A generic nonzero pair $\pm\bm k$ splits into independent real cosine and sine sectors, each containing one light and one spectator oscillator. Since these sectors are identical and independent in our calculation,
 \begin{equation}S_{\bm k,-\bm k}=2s(\nu_q).\end{equation}
 We quote the entropy per real sector unless stated otherwise.
 \begin{thebibliography}{9}\small
 \bibitem{gaussian} C. Weedbrook et al., \emph{Gaussian Quantum Information}, Rev. Mod. Phys. 84, 621 (2012), \href{https://arxiv.org/abs/1110.3234}{arXiv:1110.3234}.\end{thebibliography}
-\textbf{Code and supporting data:} \href{https://github.com/rawatpriyansh17/QFT-PROJECT-GROUP-B/tree/main/step2}{step2 on GitHub}.\newpage\section*{Contributions}\begin{center}\begin{tabularx}{\linewidth}{p{33mm}X}\toprule Member & Contribution\\\midrule Priyansh Rawat & Normal-mode derivation and benchmark review.\\[3mm]Samarth Bhatnagar & Reduced-state covariance and rescaling checks.\\[3mm]Mayank Sinha & Numerical diagonalisation, purity cross-check and figure.\\\bottomrule\end{tabularx}\end{center}\end{document}
+\textbf{Code and supporting data:} \href{https://github.com/rawatpriyansh17/QFT-PROJECT-GROUP-B/tree/main/step2}{step2 on GitHub}.\endgroup\newpage\section*{Contributions}\begin{center}\begin{tabularx}{\linewidth}{p{33mm}X}\toprule Member & Contribution\\\midrule Priyansh Rawat & Normal-mode derivation and benchmark review.\\[3mm]Samarth Bhatnagar & Reduced-state covariance and rescaling checks.\\[3mm]Mayank Sinha & Numerical diagonalisation, purity cross-check and figure.\\\bottomrule\end{tabularx}\end{center}\end{document}
