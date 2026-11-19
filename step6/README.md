@@ -2,7 +2,7 @@
 
 The late-time clock frequency is sqrt(M^2 + g^2 - 9/4). An independent oscillatory integral reproduces the analytic test bispectrum.
 
-[PDF report](Step_06_Report.pdf) · [LaTeX source](latex/) · [Calculation](step6.py)
+[Combined report](../final_report/Final_Report.pdf) · [Calculation](step6.py)
 
 ![Heavy clock and in-in benchmark](figures/in_in_benchmark.png)
 

@@ -2,7 +2,7 @@
 
 Mock data test the estimator with known noise. Physical data are fitted only after the convergence pilot passes, with background and momentum-window variations.
 
-[PDF report](Step_09_Report.pdf) · [LaTeX source](latex/) · [Calculation](step9.py)
+[Combined report](../final_report/Final_Report.pdf) · [Calculation](step9.py)
 
 ![Mass recovery and fit stability](figures/mock_mass_recovery.png)
 

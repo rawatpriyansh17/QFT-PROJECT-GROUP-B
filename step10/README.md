@@ -2,7 +2,7 @@
 
 At fixed quadratic parameters, changing the cubic coupling leaves Gaussian entropy fixed while scaling the leading bispectrum. Entropy alone therefore cannot determine this signal amplitude.
 
-[PDF report](Step_10_Report.pdf) · [LaTeX source](latex/) · [Calculation](step10.py)
+[Combined report](../final_report/Final_Report.pdf) · [Calculation](step10.py)
 
 ![Entropy and the spectator signal](figures/entropy_signal_control.png)
 

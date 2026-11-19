@@ -2,7 +2,7 @@
 
 Analytic Bunch-Davies modes validate the evolution. Finite starting-time product data are compared with higher-order ultraviolet initial data.
 
-[PDF report](Step_04_Report.pdf) · [LaTeX source](latex/) · [Calculation](step4.py)
+[Combined report](../final_report/Final_Report.pdf) · [Calculation](step4.py)
 
 ![Free modes and initial states](figures/free_modes.png)
 

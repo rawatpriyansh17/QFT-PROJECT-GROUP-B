@@ -66,8 +66,5 @@ def main():
     plt.xlabel('Off-diagonal coupling c');plt.ylabel('Entropy of oscillator 1 (nats)')
     plt.legend(loc='upper left',frameon=False,fontsize=9)
     plt.grid(alpha=.18);plt.tight_layout();figure(p,'oscillator_entropy')
-    # Keep the vector input used by the report in sync with the plotted PNG.
-    import shutil
-    shutil.copyfile(p/'figures/oscillator_entropy.pdf',p/'latex/figures/oscillator_entropy.pdf')
     save_json(p/'results/summary.json',{'settings':SETTINGS,'benchmark_nu':oscillator(.3)[2],'benchmark_entropy':oscillator(.3)[3],'coupling_0_6_entropy':oscillator(.6)[3],'max_rescaling_determinant_error':max_rescale,'max_wavefunction_entropy_error_nats':max_wave_error,'max_covariance_entropy_error_nats':max_cov_error,'max_gaussian_purity_error':max_purity_error,'checks_passed':True,'software':software()})
 if __name__=='__main__':main()

@@ -2,7 +2,7 @@
 
 The mass/mixing scan passes all 64 requested comparisons. Entropy is reported in nats per real sector; the whole nonzero momentum pair contributes twice this value.
 
-[PDF report](Step_05_Report.pdf) · [LaTeX source](latex/) · [Calculation](step5.py)
+[Combined report](../final_report/Final_Report.pdf) · [Calculation](step5.py)
 
 ![Gaussian entanglement](figures/entropy_and_purity.png)
 

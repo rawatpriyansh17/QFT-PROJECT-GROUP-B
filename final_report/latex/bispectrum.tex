@@ -1,0 +1,127 @@
+\section{From the quadratic state to the spectator bispectrum}
+\subsection{What is measured at the final time?}
+Let $\hat q_{\mathbf k}(\eta_f)$ be the Fourier component of the light-field \emph{operator}. Angular brackets are an expectation in the state evolved from the initial vacuum. With the Fourier convention of Eqs.~(9)--(10),
+\begin{align}
+\avg{\hat q_{\mathbf k}\hat q_{\mathbf p}}_0
+  &=(2\pi)^3\delta^3(\mathbf k+\mathbf p)\,P_q(k;\eta_f),\\
+\avg{\hat q_{\mathbf k_1}\hat q_{\mathbf k_2}\hat q_{\mathbf k_3}}_c
+  &=(2\pi)^3\delta^3(\mathbf k_1+\mathbf k_2+\mathbf k_3)\,B_q(k_1,k_2,k_3;\eta_f).
+\end{align}
+All three external fields are evaluated at $\eta_f$. After removing the momentum delta function, $P_q$ is an ordinary, real, nonnegative function of the magnitude $k$ and time. The subscript $0$ specifies the mixed quadratic Gaussian theory. The subscript $c$ retains the connected part. We keep the power at quadratic order and calculate the leading connected $B_q$ to first order in the cubic interaction.
+
+To see precisely what sets the power, write the light and heavy fields with the same two vacuum columns $b=1,2$. For $s=q,\sigma$,
+\begin{equation}
+\hat s_{\mathbf k}(\eta)=\sum_{b=1}^2
+ [s_k^b(\eta)\hat a_b(\mathbf k)+s_k^{b*}(\eta)\hat a_b^\dagger(-\mathbf k)] .
+\end{equation}
+The only surviving vacuum contraction is
+\[\avg{\hat a_b(\mathbf k)\hat a_c^\dagger(-\mathbf p)}_0=(2\pi)^3\delta_{bc}\delta^3(\mathbf k+\mathbf p).\]
+Multiplication of the two light-field expansions therefore gives
+\begin{equation}
+ P_q(k;\eta_f)=\sum_b q_k^b(\eta_f)q_k^{b*}(\eta_f)
+ =\frac{H^2}{k^3}\sum_b|Q_b(-k\eta_f)|^2 .
+\end{equation}
+Here $q_k^b=H k^{-3/2}Q_b$ and $\sigma_k^b=H k^{-3/2}\Sigma_b$. The column amplitudes are complex-valued mode functions. For a free massless field the column sum is $(1+x_f^2)/2$, giving the familiar late-time power $H^2/(2k^3)$.
+
+For a squeezed triangle with $k_1=k_L=r k_S$ and $k_2=k_3=k_S$, define the dimensionless observable
+\begin{equation}\boxed{\displaystyle F_q(r)=\frac{H\,B_q(k_L,k_S,k_S;\eta_f)}
+ {P_q(k_L;\eta_f)P_q(k_S;\eta_f)}.}\label{eq:shape}\end{equation}
+We write $F$ for $F_q$ in plots and numerical tables. Each evaluation gives one real number. The denominator uses the ordinary two-point powers, with one long and one short factor. The factor $H$ removes the inverse field dimension of $B_q/P_q^2$. The dimensionless power per logarithmic interval would instead contain $k^3/(2\pi^2)$. For the conversion $q=C\zeta$ in Eq.~(17), $B_\zeta/(P_{\zeta,L}P_{\zeta,S})=(C/H)F_q$.
+
+\clearpage
+\subsection{Where the in-in time integral comes from}
+The mixed quadratic Hamiltonian defines the interaction picture. It already evolves the coupled mode functions. The remaining interaction is the cubic Hamiltonian $H_I(\eta)$. Let $\eta_0$ be an early initial time and choose $U_I(\eta_0,\eta_0)=1$. The equation $i\partial_{\eta}U_I=H_I U_I$ integrates to
+\begin{equation}
+ U_I(\eta_f,\eta_0)=1-i\int_{\eta_0}^{\eta_f}\dd\eta\ H_I(\eta)U_I(\eta,\eta_0).
+\end{equation}
+Since $H_I$ is already first order in the cubic coupling, replace $U_I$ under the integral by its zeroth-order value $1$. For $A=\int_{\eta_0}^{\eta_f}\dd\eta\ H_I(\eta)$, Hermiticity gives $A^\dagger=A$. Thus $U_I=1-iA+O(\lambda_3^2)$ and $U_I^\dagger=1+iA+O(\lambda_3^2)$. With $O=O_I(\eta_f)$ the multiplication is
+\begin{align}
+\avg{U_I^\dagger O U_I}_0
+ &=\avg{(1+iA)O(1-iA)}_0+O(\lambda_3^2)\nonumber\\
+ &=\avg O_0+i\avg{AO}_0-i\avg{OA}_0+O(\lambda_3^2).
+\end{align}
+Subtract the unperturbed term and use $[O,H_I]=OH_I-H_IO$. The integration sums over every time when the interaction could act before measurement:
+\begin{equation}\boxed{\displaystyle
+\Delta\avg O=-i\int_{\eta_0}^{\eta_f}\dd\eta\left(\avg{O H_I(\eta)}_0-\avg{H_I(\eta)O}_0\right)
+=-i\int_{\eta_0}^{\eta_f}\dd\eta\,\avg{[O,H_I(\eta)]}_0 .}
+\end{equation}
+Taking the early-time limit with the vacuum regulator gives Eq.~(116). For a Fourier triangle $O^\dagger$ reverses every external momentum. Reality of the fields and parity invariance of this scalar state identify the reduced coefficient for that reversed triangle with the original one. Equivalently, the Wick products in the two orderings below are conjugates. If $Z$ is the coefficient in $\avg{O H_I}_0$, the difference is $Z-Z^*=2i\,\mathrm{Im}\,Z$. Multiplying by $-i$ gives $+2\,\mathrm{Im}\,Z$.
+
+\subsection{Evaluating the benchmark integral in Eq.~(117)}
+The test vertex in Section 7 is $\gamma a(q')^3/3!$ in the Hamiltonian density. For a massless mode $u_k(\eta)=H(1+ik\eta)e^{-ik\eta}/\sqrt{2k^3}$, differentiation cancels the two terms proportional to $ik$ and leaves $u'_k=H k^2\eta e^{-ik\eta}/\sqrt{2k^3}$. Each late-to-vertex contraction gives
+\[
+ u_k(0)u_k^{\prime *}(\eta)=\frac{H^2\eta}{2k}e^{ik\eta}.
+\]
+Multiplying three contractions produces $H^6\eta^3 e^{iK\eta}/(8k_1k_2k_3)$, with $K=k_1+k_2+k_3$. The factor $a=-1/(H\eta)$ supplies the minus sign and reduces $\eta^3$ to $\eta^2$. The six external-to-vertex pairings cancel $3!$. The commutator then supplies the factor of two in Eq.~(118).
+\clearpage
+With $s=(\epsilon+i)K$, $\epsilon>0$, the factor $e^{\epsilon K\eta}$ damps the integrand towards $\eta=-\infty$. Write $J_n=\int_{-\infty}^0\eta^n e^{s\eta}\dd\eta$. Since $\mathrm{Re}\,s>0$, every lower boundary term vanishes. Integration by parts gives
+\begin{align}
+J_0&=[e^{s\eta}/s]_{-\infty}^0=1/s,\nonumber\\
+J_1&=[\eta e^{s\eta}/s]_{-\infty}^0-J_0/s=-1/s^2,\nonumber\\
+I_\epsilon=J_2&=[\eta^2 e^{s\eta}/s]_{-\infty}^0-2J_1/s=2/s^3.
+\end{align}
+As $\epsilon\to0^+$ we have $1/i^3=i$, so $\mathrm{Im}\, I_\epsilon\to2/K^3$. Substitution gives
+\[B_{\rm test}=-\frac{\gamma H^5}{4 k_1k_2k_3}\frac{2}{K^3}=-\frac{\gamma H^5}{2 k_1k_2k_3 K^3}.\] The test checks the commutator sign independently of the heavy-field evolution.
+
+\subsection{Why one cubic vertex gives three mixed contractions}
+For the physical interaction, take $O=\hat q_{\mathbf k_1}\hat q_{\mathbf k_2}\hat q_{\mathbf k_3}$ and $H_I=(\lambda_3/3!)\,a^4\int\dd^3x\,\hat\sigma^3$. All spectator operators are at the integration time $\eta$. Fourier expanding the three fields and integrating over $\mathbf x$ gives
+\begin{equation}
+ H_I=\frac{\lambda_3 a^4}{3!}\int\prod_{j=1}^3\frac{\dd^3p_j}{(2\pi)^3}\,
+ (2\pi)^3\delta^3(\mathbf p_1+\mathbf p_2+\mathbf p_3)
+ \hat\sigma_{\mathbf p_1}\hat\sigma_{\mathbf p_2}\hat\sigma_{\mathbf p_3}.
+\end{equation}
+The same vacuum multiplication used for $P_q$ now pairs two different fields at two different times:
+\begin{align}
+\avg{\hat q_{\mathbf k}(\eta_f)\hat\sigma_{\mathbf p}(\eta)}_0
+ &=(2\pi)^3\delta^3(\mathbf k+\mathbf p)K_k(\eta_f,\eta),\nonumber\\
+K_k(\eta_f,\eta)&=\sum_b q_k^b(\eta_f)\sigma_k^{b*}(\eta).
+\end{align}
+For one connected Wick pairing, $q_1$ pairs with $\sigma_1$, $q_2$ with $\sigma_2$ and $q_3$ with $\sigma_3$. The three delta functions set $\mathbf p_j=-\mathbf k_j$. The vertex delta then imposes $\sum_j\mathbf k_j=0$. There are $3\times2\times1=6$ choices of which spectator each external leg pairs with. Relabeling the dummy momenta gives the same product for all six. Pairing two external legs together gives a disconnected term, excluded from $B_q$.
+
+Stripping off the single remaining delta function yields $Z=(6/3!)\lambda_3 a^4 K_{k_1}K_{k_2}K_{k_3}$. Reversing the operator order conjugates each $K_k$. The commutator found above therefore gives
+\begin{equation}\boxed{\displaystyle B_q=2\lambda_3\int_{-\infty}^{\eta_f}\dd\eta\,a^4(\eta)\,
+ \mathrm{Im}\!\left[K_{k_1}K_{k_2}K_{k_3}\right].}\end{equation}
+Squares of magnitudes discard relative phases. A list of final powers therefore cannot reconstruct this integral.
+\clearpage
+\subsection{One final time, two momentum scales}
+Set $z=-k_S\eta$ and $z_f=-k_S\eta_f$. For the short legs, $-k\eta=z$ and $-k\eta_f=z_f$. On the long leg the same times give $rz$ and $rz_f$. For example, $r=0.03$ and $z_f=0.01$ give long final argument $0.0003$. Evaluating the long leg at $0.01$ would select a different physical time.
+\begin{align}
+C_L(z)&=\sum_b Q_b(rz_f)\Sigma_b^*(rz), &C_S(z)&=\sum_b Q_b(z_f)\Sigma_b^*(z),\nonumber\\
+p_L&=\sum_b|Q_b(rz_f)|^2, &p_S&=\sum_b|Q_b(z_f)|^2.
+\end{align}
+Each contraction contains two factors of $Hk^{-3/2}$. Thus $K_L=H^2 C_L/k_L^3$, $K_S=H^2 C_S/k_S^3$, $P_L=H^2 p_L/k_L^3$ and $P_S=H^2 p_S/k_S^3$. Here $P_L,P_S$ abbreviate the two evaluations of $P_q$.
+
+Now $a=k_S/(Hz)$ and $\dd\eta=-\dd z/k_S$. Reversing the limits removes the minus sign and gives
+\[
+ \int_{-\infty}^{\eta_f}\dd\eta\,a^4(\eta)(\cdots)
+ =\frac{k_S^3}{H^4}\int_{z_f}^\infty\frac{\dd z}{z^4}(\cdots).
+\]
+Use this result before setting numerical units:
+\begin{align}
+ B_q&=2\lambda_3\frac{k_S^3}{H^4}\frac{H^6}{k_L^3 k_S^6}
+ \int_{z_f}^\infty\frac{\dd z}{z^4}\,\mathrm{Im}(C_L C_S^2),\nonumber\\
+ P_LP_S&=\frac{H^4p_Lp_S}{k_L^3 k_S^3},\nonumber\\
+ F_q(r)&=\frac{2(\lambda_3/H)}{p_Lp_S}\int_{z_f}^\infty\frac{\dd z}{z^4}\,
+ \mathrm{Im}\!\left[C_L(z)C_S(z)^2\right].
+\end{align}
+Both the numerator and denominator of Eq.~\eqref{eq:shape} carry $1/(k_L^3k_S^3)$. This cancels the explicit $r^{-3}$ from $k_L=r k_S$ while retaining physical $r$ dependence in the complex modes. The square is an ordinary complex square because there are two short contractions in the same ordering.
+
+\textbf{From the integral to a stored number.} For quadrature nodes $z_j$ and weights $w_j$, store $G_j=C_L(z_j)C_S(z_j)^2/z_j^4$. Since $K\eta=-(2+r)z$, the regulated numerical estimator is
+\begin{equation}
+ F_{\epsilon,L}=\frac{2(\lambda_3/H)}{p_Lp_S}\sum_{z_j\in[z_f,L]} w_j e^{-\epsilon(2+r)z_j}\,\mathrm{Im}\,G_j .
+\end{equation}
+$L$ is the integration cutoff. The earlier mode initialisation occurs at $X\ge L$. The vacuum limit requires control of both $L$ and $\epsilon$. Setting $\epsilon=0$ at a fixed small $L$ would expose an unsuppressed oscillatory tail.
+
+\clearpage
+\subsection{Pilot signal and coupling controls}
+The pilot uses $H=k_S=1$, $M=m/H=2$, $g=0.1$, $\lambda_3/H=0.01$, $X=800$, $z_f=0.01$, $L=320$ and $\epsilon=0.025$. At $r=0.1,0.03,0.01$ the regulated values are respectively $1.92979\times10^{-9}$, $-3.64205\times10^{-10}$ and $5.80157\times10^{-11}$. The sign change motivates scanning the triangle ratio after verifying convergence.
+\fig{cumulative_integral}{.82}{Running sum at $r=0.03$, accumulated from late time towards earlier times. The individual lobes are larger than their residual. This cancellation makes the sign and phase of each contraction important.}
+\textbf{Two exact zeros.} Setting $\lambda_3=0$ removes the vertex. At $g=0$ the vacuum columns of $q$ and $\sigma$ have disjoint support, so $K_k=0$ on every leg. Both controls return zero. Doubling $\lambda_3/H$ to $0.02$ doubles the pilot result, as required by a first-order calculation.
+
+\textbf{Weak mixing.} Each mixed contraction requires one transfer between the fields and starts at order $g$. Three such contractions give $F\propto\lambda_3 g^3$ at leading weak mixing. The power corrections start at even order. At the same $r=0.03$, the three measurements give
+\begin{center}\begin{tabular}{rrr}\toprule $g$ & Regulated $F$ & $F/g^3$ \\\midrule
+0.025 & $-5.8382\times10^{-12}$ & $-3.7364\times10^{-7}$\\
+0.050 & $-4.6468\times10^{-11}$ & $-3.7175\times10^{-7}$\\
+0.100 & $-3.6420\times10^{-10}$ & $-3.6420\times10^{-7}$\\\bottomrule\end{tabular}\end{center}
+The small drift in the last column is consistent with the expected departure from leading scaling as mixing increases.
+\source{7}{Complex modes, integrand, regulated values and mixing controls}

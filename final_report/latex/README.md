@@ -1,13 +1,15 @@
-# Cumulative Research Report
+# Build the combined report
 
-Compile from this folder using pdfLaTeX (two passes):
+From the repository root, with a standard pdfLaTeX installation and Python with PyMuPDF installed, run
 
 ```bash
-mkdir -p build
-pdflatex -interaction=nonstopmode -halt-on-error -output-directory=build main.tex
-pdflatex -interaction=nonstopmode -halt-on-error -output-directory=build main.tex
+python3 -m pip install PyMuPDF
+python3 final_report/build_report.py
 ```
 
-The logo and figure inputs are included.
+The script compiles twice, restores the original foundation-page hyperlinks and writes `final_report/Final_Report.pdf`.
 
-The report has one section for each completed Step (1–10), ending with a short line naming all three members and their specific contributions. These lines are generated in `contributions.tex` from the individual Step reports. After changing a Step contribution, run `python3 sync_contributions.py --build` from the repository root to synchronise the lines and rebuild `final_report/Final_Report.pdf`. Keep `main.tex`, `contributions.tex` and the included assets together when compiling.
+- `main.tex` supplies the cover, contents, numbering and document structure.
+- `assets/foundation.pdf` contains the typeset scientific pages from Samarth’s Steps 1–6, including his analytic benchmark. The original per-step credit tables are consolidated on the closing page.
+- `bispectrum.tex`, `convergence.tex`, `mass.tex` and `entropy.tex` contain the continuation. Their figures are in `figures/`.
+- `contributions.tex` contains the project-wide attribution table.
