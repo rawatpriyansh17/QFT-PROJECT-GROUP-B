@@ -2,7 +2,7 @@
 
 The benchmark gives nu = 0.5028165419863 and entropy = 0.0193599304236 nats. Local canonical rescaling leaves this entropy unchanged.
 
-[PDF report](Step_02_Report.pdf) · [LaTeX source](latex/) · [Calculation](step2.py)
+[Combined report](../final_report/Final_Report.pdf) · [Calculation](step2.py)
 
 ![Two-oscillator Gaussian entropy](figures/oscillator_entropy.png)
 

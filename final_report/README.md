@@ -1,7 +1,7 @@
-# Cumulative research report
+# Combined project report
 
-[Download the 10-page PDF](Final_Report.pdf) · [LaTeX source and compilation instructions](latex/)
+[Read the report](Final_Report.pdf) · [Build instructions](latex/README.md)
 
-The report contains a separate section for each completed Step (1–10), with the names and specific contributions at the end of each Step. It combines the model, independent validation, Gaussian entropy scan, converged spectator bispectrum, mock recovery and physical mass-fit stability. It concludes with the cubic-coupling control showing why Gaussian entropy alone cannot determine the leading signal amplitude.
+Sections 1–7 contain the project foundations and analytic benchmark from Samarth Bhatnagar’s combined report. Sections 8–11 derive the spectator three-point function, test the numerical integral, recover the clock frequency and compare the signal with Gaussian entropy. The last page records contributions across all ten steps.
 
-All underlying calculations and numerical settings are in `step1/` through `step10/`.
+The numbered directories at the repository root contain the calculation scripts, settings, results and figure previews.

@@ -2,7 +2,7 @@
 
 A symbolic Legendre transform checks the Hamiltonian. Independently implemented canonical and velocity equations are compared on the same initial data.
 
-[PDF report](Step_03_Report.pdf) · [LaTeX source](latex/) · [Calculation](step3.py)
+[Combined report](../final_report/Final_Report.pdf) · [Calculation](step3.py)
 
 ![Canonical equations](figures/formulation_agreement.png)
 

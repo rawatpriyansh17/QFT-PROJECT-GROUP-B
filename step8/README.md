@@ -2,7 +2,7 @@
 
 Initial state, cutoff, regulator, ODE accuracy, quadrature and final-time effects are tested separately. The combined budget is a systematic numerical estimate.
 
-[PDF report](Step_08_Report.pdf) · [LaTeX source](latex/) · [Calculation](step8.py)
+[Combined report](../final_report/Final_Report.pdf) · [Calculation](step8.py)
 
 ![Convergence and numerical errors](figures/bispectrum_convergence.png)
 

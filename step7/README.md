@@ -2,7 +2,7 @@
 
 The leading sigma-cubed interaction is evaluated from complex mixed contractions at a common physical final time. Step 8 controls its regulator and initial-state errors.
 
-[PDF report](Step_07_Report.pdf) · [LaTeX source](latex/) · [Calculation](step7.py)
+[Combined report](../final_report/Final_Report.pdf) · [Calculation](step7.py)
 
 ![Spectator bispectrum](figures/cumulative_integral.png)
 
