@@ -7,7 +7,7 @@ Curvature–spectator entanglement and the cosmological collider. A project by P
 | File | Purpose |
 | --- | --- |
 | [Final_Report.tex](Final_Report.tex) | Single LaTeX entry point for the report. |
-| [assets/](assets/) | The institute logo, five plots, and Samarth’s typeset foundation pages for Sections 1–7. Those pages were supplied as a PDF. Sections 8–11 and the contributions are editable in the TeX file. |
+| [assets/](assets/) | The institute logo and five plots |
 | [calculations.py](calculations.py) | Numerical work behind the power, entropy, bispectrum and mass-recovery results. |
 
 ## Compile the report
