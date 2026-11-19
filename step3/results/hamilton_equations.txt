@@ -1,2 +1,0 @@
-Hamiltonian: a**4*m**2*sigma**2/2 + a**4*rho**2*sigma**2/2 + a**2*k**2*q**2/2 + a**2*k**2*sigma**2/2 - a*pi_q*rho*sigma + pi_q**2/(2*a**2) + pi_sigma**2/(2*a**2)
-Hamilton equations: [(-2*a**3*rho*sigma + 2*pi_q)/(2*a**2), -a**2*k**2*q, pi_sigma/a**2, -a**4*m**2*sigma - a**2*k**2*sigma + a*rho*(-a**3*rho*sigma + pi_q)]

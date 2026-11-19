@@ -1,36 +1,33 @@
-# QFT Project B
+# What Quantum Trace Can a Heavy Particle Leave?
 
-**Curvature-spectator entanglement and the cosmological collider**
+**[Read the final report (PDF)](Final_Report.pdf)**
 
-Priyansh Rawat, Samarth Bhatnagar and Mayank Sinha  
-BITS Pilani, K. K. Birla Goa Campus | Supervisor: Professor Rudranil Basu
+Curvature–spectator entanglement and the cosmological collider. A project by Priyansh Rawat, Mayank Sinha and Samarth Bhatnagar, supervised by Professor Rudranil Basu at BITS Pilani, K. K. Birla Goa Campus.
 
-**[Combined report PDF](final_report/Final_Report.pdf)** · **[Combined report LaTeX](final_report/latex/)**
-
-| Step | Calculation |
+| File | Purpose |
 | --- | --- |
-| [1](step1/) | Spacetime, fields and single-field reference |
-| [2](step2/) | Two-oscillator Gaussian entropy |
-| [3](step3/) | Canonical equations |
-| [4](step4/) | Free modes and initial states |
-| [5](step5/) | Gaussian entanglement |
-| [6](step6/) | Heavy clock and in-in benchmark |
-| [7](step7/) | Spectator bispectrum |
-| [8](step8/) | Convergence and numerical errors |
-| [9](step9/) | Mass recovery and fit stability |
-| [10](step10/) | Entropy and the spectator signal |
+| [Final_Report.tex](Final_Report.tex) | Single LaTeX entry point for the report. |
+| [assets/](assets/) | The institute logo, five plots, and Samarth’s typeset foundation pages for Sections 1–7. Those pages were supplied as a PDF. Sections 8–11 and the contributions are editable in the TeX file. |
+| [calculations.py](calculations.py) | Numerical work behind the power, entropy, bispectrum and mass-recovery results. |
 
-Each directory contains the calculation, figures and numerical records for that step. The combined report ends with one contribution page covering the whole project.
+## Compile the report
 
-## Reproduce
+From the repository root, run pdfLaTeX twice to resolve the contents and cross-references.
 
-Use Python 3.12 from the repository root:
-
-```bash
-python3 -m pip install -r requirements.txt
-python3 run_steps.py
+```sh
+pdflatex Final_Report.tex
+pdflatex Final_Report.tex
 ```
 
-To run selected steps, pass their numbers, for example `python3 run_steps.py 2 3`. Steps 8, 9 and 10 have data dependencies and should be run in that order. Step 1 has its own command in its README. To rebuild the PDF, follow the [report build instructions](final_report/latex/README.md).
+## Reproduce a result
 
-The final result includes a validated entropy map, a resolved baseline heavy-clock shape and explicit fit-window/background sensitivity. The physical mass range is a numerical/model sensitivity envelope, not an observational confidence interval.
+With Python 3.12, the following commands compute the regulated-integral error budget, fit the clock on 50 triangles and evaluate the cubic-coupling controls.
+
+```sh
+python3 -m pip install numpy scipy mpmath
+python3 calculations.py clock
+```
+
+The full-window fit gives $m/H=1.9930$ for an input of $2$. Across the twelve fit choices the range is $1.9930$–$2.0198$. Numerical residuals close to machine precision can vary with the solver and platform.
+
+Use `reference` for the squeezed-limit and oscillator benchmarks, `gaussian` for the mode and covariance checks, `benchmark` for the analytic in-in integral, `pilot` for the regulated bispectrum, or `mock` for the seeded recovery trials. The `grid` calculation evaluates all 625 mass–mixing pairs in Figure 10. Running `all` performs every calculation. Generated tables go to a local `results/` directory, or to the directory passed with `--out`.
